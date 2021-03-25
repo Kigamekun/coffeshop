@@ -1,0 +1,39 @@
+{% extends "account/base.html" %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+
+{% block content %}
+<style>
+  body {
+    background-image:url(https://cdnb.artstation.com/p/assets/images/images/018/839/739/large/bear-jing-3d-v10b-small.jpg?1560933339);
+    
+    font-weight: bold;
+  }
+  main {
+    color: white;
+    text-shadow: 2px 2px 2px orange;
+  }
+</style>
+  <main>
+    <center>
+    <div style="margin-top: 30px;" class="container">
+      <section class="mb-4">
+        <div class="row wow fadeIn">
+          <div class='col-6 offset-3'>
+            <h1><b>{% trans "Sign Out" %} <i class="fas fa-heart-broken"></i></b></h1>
+            <p>{% trans 'Are you sure you want to sign out?' %} </p>
+            <form method="post" action="{% url 'account_logout' %}">
+              {% csrf_token %}
+              {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+              {% endif %}
+              <button class='btn btn-primary' type="submit">{% trans 'Sign Out' %}</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </center>
+  </main>
+{% endblock %}

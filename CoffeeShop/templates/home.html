@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style>
+  
+  .container{
+    
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+  }
+
+</style>  
+
+<main>
+  <center>
+  <h1 style="color: white; text-shadow: 2px 2px 2px cyan;">Menu's Coffee</h1>
+</center>
+    
+    <div style="margin-top: 30px;" class="container">
+    
+    {% for item in object_list %}
+    <div class="card"  style="height:550px;margin:10px;width: 18rem;">
+      <img style="height: 300px;" src="{{item.image.url}}" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title"><b>{{item.name}}</b></h5>
+        <p class="card-text">Price : Rp. {{item.price|floatformat:-2}}</p>
+        
+        {% if user.is_staff or user.is_superuser %}
+
+        <a href="{% url 'core:update' item.id %}" class="btn btn-success">Edit</a>
+        <a href="{% url 'core:delete' item.id %}" class="btn btn-danger"> Del </a>
+        <a href="{% url 'core:add_to_cart' item.id %}" class="btn btn-success">Add !</a>
+        <a href="{% url 'core:detail' item.id %}" class="btn btn-info"><i class="fas fa-search-plus"></i></a>
+    
+        
+      {% elif user.is_authenticated %}  
+        <a href="{% url 'core:add_to_cart' item.id %}" class="btn btn-success">Beli !</a>
+        <a href="{% url 'core:detail' item.id %}" class="btn btn-info"><i class="fas fa-search-plus"></i></a>
+        
+        {% else %}
+          
+
+<a href="{% url 'core:detail' item.id %}" class="btn btn-info">Detail</a>
+          
+        {% endif %}
+          
+      </div>
+    </div>
+    {% endfor %}
+      
+    </div>
+    
+      <div style="margin-left: 50%;" class="justify-content-center wow fadeIn">
+
+    {% if is_paginated %}
+      <ul class="pagination pg-blue">
+
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+            <span style="color: blue;" aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        {% endif %}
+
+        <li class="page-item active">
+          <a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+
+        {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+            <span style="color: blue;" aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+      {% endif %}
+    </div>
+  <div style="height:100px;"></div>
+  </main>
+
+{% endblock content %}
+
+

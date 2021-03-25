@@ -1,0 +1,99 @@
+
+
+<style>
+* {
+  font-weight: bold;
+  font-family: 'Balsamiq Sans', cursive;
+ 
+}
+nav{
+  text-shadow: 2px 2px 2px cyan;
+}
+
+
+</style>
+
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="{% url 'core:about' %}"><i class="fab fa-wolf-pack-battalion"> </i> SIXDOME COFFEE</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+          </li>
+          {% if user.is_superuser or user.is_staff %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'core:create' %}">Create<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'core:order-aktif' %}">Active Ord</a>
+      </li>
+          
+          {% endif %}
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'core:pricing' %}">Pricing / Menu</a>
+          </li>
+      </ul>
+      
+      {% if user.is_authenticated %}
+      <ul class="navbar-nav">
+      <i style=" margin:auto;color: white;" class="fas fa-user-alt"></i>
+      <li class="nav-item">
+          <a class="nav-link waves-effect" href="">
+           {{user}}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="{% url 'account_logout' %}">
+            Logout </span>
+          </a>
+        </li>
+         
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="{% url 'core:cart' %}"><i class="fab fa-opencart"></i>
+          </a>
+          </li>
+          {% if user.is_superuser or user.is_staff %}
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="/admin">
+        Ctrlrm 
+            </a>
+          </li>
+          
+          {% endif %}
+      </ul>
+        {% else %}
+        <ul class="navbar-nav">
+        <i style="color:white;margin:auto;" class="fas fa-user-secret"></i>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="{% url 'account_login' %}">
+              Login 
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="{% url 'account_signup' %}">
+              Signup 
+            </a>
+          </li>
+          
+        
+            
+  
+          
+       
+          {% endif %}
+
+        </ul>
+  </div>
+</nav>
+
+
+
+        </ul>
+      </div>
+
+    </div>
+  </nav>

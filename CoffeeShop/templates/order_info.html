@@ -1,0 +1,25 @@
+<div class="card bg-warning text-dark border-dark shadow-lg">
+    <div class="card-body">
+      <h1 class="card-title">Your Name : {{user}}</h1>
+      <h3>IDR {{ order.total }} A/N {{ order.pelanggan }}</h3>
+    </div>
+  
+    <ul class="list-group list-group-flush bg-warning">
+      {% for item in order.order_item.all %}
+        <li class="list-group-item text-dark bg-warning">
+          {{ item.menu.name }}  <a style="margin-left: 80%;" class="btn btn-danger" href="{% url 'core:delete_to_cart' item.menu.id %}"><i class="fas fa-trash"></i></a><br>
+          IDR {{ item.harga }} x {{ item.qty }} = IDR {{ item.subtotal }}
+        </li>
+  
+      {% empty %}
+        <li class="list-group-item text-dark bg-warning">
+          Item belum ada!
+        </li>
+      {% endfor %}
+    </ul>
+  
+    <div class="card-footer">
+      <a href="#" class="btn btn-success btn-lg btn-block">Bayar</a>
+      <a href="{% url 'core:pricing' %}" class="btn btn-info btn-lg btn-block">Balik ?</a>
+    </div>
+  </div>

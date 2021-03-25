@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<style>
+    .container {
+        background: transparent;    
+        margin-top: 5%;
+
+    }
+    .card {
+        padding: 10px;
+    
+        background: transparent;
+    }
+    
+    body {
+        background-image:url(https://cdnb.artstation.com/p/assets/images/images/018/839/739/large/bear-jing-3d-v10b-small.jpg?1560933339);
+  
+    }
+    .card-body {
+        text-shadow: 2px 2px 2px orange;
+        margin-top: 10px;
+    }
+</style>
+<div class="container">
+<div class="card-group">
+    <div class="card">
+        <center>
+      <img style="border-radius:20px;height: 300px;width: 300px;" class="card-img-top" src="{{data.image.url}}" alt="Card image cap">
+    </center>
+      <div class="card-body">
+        <h1 >Nama : {{data.name}}</h1>
+        <h2 >Harga     : Rp. {{data.price}}</h2>
+        <h2 > deskripsi : {{data.description}}</h2>
+      </div>
+      <center>
+      <a class="btn btn-info" href="{% url 'core:home' %}">mau balik ?</a>
+    </center>
+    </div>
+    
+</div>
+{% endblock content %}
+    

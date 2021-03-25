@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{%load static%}
+
+{% block content %}
+	<style>
+		  body {
+    background-image:url(https://cdnb.artstation.com/p/assets/images/images/018/839/739/large/bear-jing-3d-v10b-small.jpg?1560933339);
+  }
+  .container{
+	  margin-top: 10%;
+
+
+  }
+  .in {
+	text-shadow: 2px 2px 2px yellow;
+	font-weight: bold;
+  }
+
+	</style>
+<div class="container">
+	
+	<form method="POST" enctype="multipart/form-data">
+
+		{% csrf_token %}
+		
+		{% for form in forms %}
+		
+		{% if form.label == "Image" %}
+		
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+			  <span class="input-group-text">Upload</span>
+			</div>
+			<div class="custom-file">
+			  {{form}}
+			  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+			</div>
+		  </div>
+		  {% else %}
+		  	
+		<div class="form-group">
+			<h4 class="in">{{form.label}}</h4> 
+			{{form}}
+		</div>
+		
+		{% endif %}
+		
+		{% endfor %}
+
+		<center><button class="btn btn-success" type="submit">Buat !</button></center>
+		<br>
+		<br>
+
+		
+		
+
+
+	</form>
+</div>
+
+
+{% endblock content %}

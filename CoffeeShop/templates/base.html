@@ -1,0 +1,140 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Sixdome</title>
+  <link rel="icon" href="https://image.freepik.com/free-vector/coffee-shop-badge-vintage-style_1176-95.jpg">
+  {% block extra_head %}
+  {% endblock %}
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Acme&family=Balsamiq+Sans:ital,wght@1,700&family=Patrick+Hand&display=swap" rel="stylesheet"> 
+    
+
+<link rel="stylesheet" type="text/css" href="{% static 'land/fonts/line-icons.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'land/css/animate.css' %}">
+
+<!-- Plugins CSS file -->
+<link rel="stylesheet" type="text/css" href="{% static 'land/css/slicknav.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'land/css/owl.carousel.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'land/css/owl.theme.css' %}">
+
+<!-- Project css with  Responsive-->
+
+<link rel="stylesheet" type="text/css" href="{% static 'land/css/responsive.css' %}">
+   <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
+  <style type="text/css">
+    html,
+    body,
+    header,
+    .carousel {
+      height: 60vh;
+    
+}
+
+ .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+	background:url({% static 'image/background.jpg' %});      
+    }
+    .preloader .loading {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      font: 14px arial;
+    }
+
+
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+  body , .preloader {
+   
+
+   background: url({% static 'image/background.jpg' %}) no-repeat center center fixed; 
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
+ 
+ }
+ @media screen  and (max-width : 576px){
+     html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    body{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  
+    }
+  }
+  </style>
+<script>
+    $(document).ready(function(){
+
+      $(".preloader").delay(3000).fadeOut();
+    })
+    </script>
+</head>
+
+{% include "navbar.html" %}
+
+<body>
+ 
+  
+    
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+    
+    {% block content %}
+    {% endblock content %}
+
+    {% block extra_body %}
+    {% endblock %}
+
+    {% include "footer.html" %}
+    {% include "scripts.html" %}
+    
+    {% block extra_scripts %}
+    {% endblock extra_scripts %}
+</body>
+</html>

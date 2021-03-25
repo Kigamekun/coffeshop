@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{%load static%}
+
+
+{% block content %}
+<style>
+      body {
+    background-image:url(https://cdnb.artstation.com/p/assets/images/images/018/839/739/large/bear-jing-3d-v10b-small.jpg?1560933339);
+    /* background-image: url(https://wallpaperwaifu.com/wp-content/uploads/2020/01/night-coffee-shop-thumb.jpg); */
+  }
+  .container {
+      margin-top: 10%;
+      border-radius: 25px;
+      color: white;
+      text-shadow: 2px 2px 2px purple;
+      background-color: rgba(0, 0, 0, 0.6);
+  }
+</style>
+<div class="container">
+	<center><h1 id="hone" class="tentang">About Me !</h1>
+		<h2>Nama : Reksa Prayoga S</h2>
+		<div style="overflow:hidden;box-shadow: 2px 2px 2px cyan; height:200px;width:200px;border-radius:50%;margin-bottom:30px;">
+			<img style="height: auto;max-width: 100%;display: inherit;" src="{% static 'img/logo.jpeg' %}" alt="">
+		</div>
+	</center>	
+	<p> Sayahanyalah seorang pengangguran yang masuk dalam kategori wibu hehe , saya suka perhitungan matematika fisika maupun kimia dan saya juga suka untuk mengeksplor hal baru , ditambah saya ini masih belum ada apa apanya dibanding kalian jadi <span class="motive">Keep coding and stay awesome ! salam kenal Reksa Aka Kigamekun</span></p>
+</div>
+{% endblock content %}
+    
